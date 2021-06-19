@@ -117,9 +117,6 @@ a:active {
 #ultimas-postagens .post .data-horario {
   background-color: white;
   color: #333;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 3px;
   display: inline-block;
   margin-right: 1em;
 }
@@ -128,6 +125,18 @@ a:active {
   font-size: 16px;
   line-height: 22px;
   display: inline-block;
+}
+
+.novidade::before {
+  content: "Novidade!";
+  background-color: forestgreen;
+}
+
+#ultimas-postagens .post .data-horario,
+.novidade::before {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 /* --- Principal >> Nuvem de tags --- */
