@@ -155,6 +155,10 @@ a:active {
   background-size: 300px;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 100;
+  top: 0;
 }
 
 #tags h1 {
@@ -191,6 +195,7 @@ a:active {
 
 /* --- Boos --- */
 .boo {
+  z-index: 99;
   width: 40px;
   position: absolute;
 }
