@@ -6,7 +6,8 @@ body {
   font-family: monospace;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
 }
 
@@ -40,11 +41,10 @@ a:active {
   color: red;
 }
 
-
 /* --- Cabeçalho --- */
 #cabecalho {
-  background-color: rgba(0, 0, 0, .95);
-  box-shadow: 2px 10px 10px rgba(0,0,0, .25);
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.25);
   padding-top: 1em;
   text-align: center;
 }
@@ -59,10 +59,13 @@ a:active {
 }
 
 #menu-de-navegacao ul {
-  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em 0;
+  margin: 0;
+  flex-wrap: wrap;
 }
-
-
 
 /* --- Conteúdo principal da página --- */
 #conteudo-principal {
@@ -70,9 +73,6 @@ a:active {
   transition: opacity 1s linear;
   padding-bottom: 3em;
 }
-
-
-
 
 /* --- Principal >> Postagens principais --- */
 #posts-principais {
@@ -100,11 +100,8 @@ a:active {
   max-width: 400px;
   box-sizing: border-box;
   border: 6px solid white;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
-
-
-
 
 /* --- Principal >> Últimas postagens --- */
 #ultimas-postagens {
@@ -132,9 +129,6 @@ a:active {
   line-height: 22px;
   display: inline-block;
 }
-
-
-
 
 /* --- Principal >> Nuvem de tags --- */
 #tags {
@@ -174,13 +168,9 @@ a:active {
   font-size: 150%;
 }
 
-
-
-
-
 /* --- Rodapé --- */
 #rodape {
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 1em;
   display: flex;
 }
@@ -188,10 +178,6 @@ a:active {
 #rodape .logo-rodape {
   margin-right: 2em;
 }
-
-
-
-
 
 /* --- Vídeo --- */
 .backdrop {
@@ -226,7 +212,7 @@ a:active {
   top: calc(50% - 0.75em);
   border-radius: 50%;
   border: 2px solid currentColor;
-  background-color: rgba(255, 255, 255, .15);
+  background-color: rgba(255, 255, 255, 0.15);
   color: black;
   font-size: 2.5rem;
   width: 1.5em;
@@ -235,8 +221,8 @@ a:active {
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 #unmute:hover {
