@@ -158,6 +158,8 @@ a:active {
   background-color: orange;
   color: white;
   text-shadow: 1px 1px black;
+  position: relative;
+  cursor: default;
 }
 
 .tag-2 {
@@ -166,6 +168,11 @@ a:active {
 
 .tag-3 {
   font-size: 150%;
+}
+
+#tags span:active {
+  right: 2px;
+  bottom: 2px;
 }
 
 /* --- Rodapé --- */
