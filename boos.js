@@ -5,14 +5,14 @@
 // por 'mouseenter'. Veja no que dá!
 //
 const DISTANCIA_PERCORRIDA_MAXIMA = 80; // em px
-const TEMPO_PARA_MUDAR_DE_LADO = 250;   // em ms (milissegundos)
-const DURACAO_DO_MOVIMENTO = 500;       // idem
+const TEMPO_PARA_MUDAR_DE_LADO = 250; // em ms (milissegundos)
+const DURACAO_DO_MOVIMENTO = 500; // idem
 
 // pega todo mundo que tem class="boo" na página
-let boos = document.querySelectorAll('.boo');
+let boos = document.querySelectorAll(".boo");
 
 // percorre cada um
-boos.forEach(booEl => {
+boos.forEach((booEl) => {
   const estilos = window.getComputedStyle(booEl);
   const transicaoMesmaDirecao = `all ${DURACAO_DO_MOVIMENTO}ms ease`;
   const transicaoMudandoDirecao = `
@@ -26,14 +26,14 @@ boos.forEach(booEl => {
   // este boo tenha right ou bottom definidos
   booEl.style.transition = transicaoMesmaDirecao;
   booEl.style.left = estilos.left;
-  booEl.style.right = 'initial';
+  booEl.style.right = "initial";
 
   booEl.style.top = estilos.top;
-  booEl.style.bottom = 'initial';
-  booEl.style.cursor = 'pointer';
+  booEl.style.bottom = "initial";
+  booEl.style.cursor = "pointer";
 
   // quando este boo for clicado...
-  booEl.addEventListener('click', e => {
+  booEl.addEventListener("mouseenter", (e) => {
     let booEl = e.currentTarget;
     // largura e altura máximas até onde ele pode ir
     let larguraDisponivelNaPagina = document.body.clientWidth;
@@ -43,26 +43,37 @@ boos.forEach(booEl => {
     let anguloDirecao = Math.random() * Math.PI * 2;
     // sorteia uma distância que ele vai percorrer, que é pelo menos 50%
     // da DISTANCIA_PERCORRIDA_MAXIMA
-    let distanciaPercorrida = (Math.random() * DISTANCIA_PERCORRIDA_MAXIMA / 2) + DISTANCIA_PERCORRIDA_MAXIMA / 2;
+    let distanciaPercorrida =
+      (Math.random() * DISTANCIA_PERCORRIDA_MAXIMA) / 2 +
+      DISTANCIA_PERCORRIDA_MAXIMA / 2;
 
     // encontra a nova coordenada (x,y), usando o círculo trigonométrico
     // (ângulo e raio)
     // se ficar curioso sobre esta conta, veja a imagem em imgs/circulo-trigonometrico.png
-    let novoX = booEl.offsetLeft + Math.cos(anguloDirecao) * distanciaPercorrida;
+    let novoX =
+      booEl.offsetLeft + Math.cos(anguloDirecao) * distanciaPercorrida;
     let novoY = booEl.offsetTop + Math.sin(anguloDirecao) * distanciaPercorrida;
 
     // garante que a nova coordenada (x,y) não saiu da página
-    novoX = Math.min(larguraDisponivelNaPagina - booEl.width, Math.max(0, novoX));
-    novoY = Math.min(alturaDisponivelNoContainer - booEl.height, Math.max(0, novoY));
+    novoX = Math.min(
+      larguraDisponivelNaPagina - booEl.width,
+      Math.max(0, novoX)
+    );
+    novoY = Math.min(
+      alturaDisponivelNoContainer - booEl.height,
+      Math.max(0, novoY)
+    );
 
-    const estaViradoParaEsquerda = booEl.style.transform === 'scaleX(-1)';
+    const estaViradoParaEsquerda = booEl.style.transform === "scaleX(-1)";
     const estaViradoParaDireita = !estaViradoParaEsquerda;
     const vaiAndarParaDireita = novoX > booEl.offsetLeft;
     const vaiAndarParaEsquerda = !vaiAndarParaDireita;
 
     // determina se vai ter que fazer uma pausa pra mudar de lado
-    if ((estaViradoParaDireita && vaiAndarParaEsquerda) ||
-      (estaViradoParaEsquerda && vaiAndarParaDireita)) {
+    if (
+      (estaViradoParaDireita && vaiAndarParaEsquerda) ||
+      (estaViradoParaEsquerda && vaiAndarParaDireita)
+    ) {
       booEl.style.transition = transicaoMudandoDirecao;
     } else {
       booEl.style.transition = transicaoMesmaDirecao;
@@ -70,11 +81,11 @@ boos.forEach(booEl => {
 
     // se andou para a direita, não reflete a imagem
     if (vaiAndarParaDireita) {
-      booEl.style.transform = 'scaleX(1)';
+      booEl.style.transform = "scaleX(1)";
     }
     // se andou para a esquerda, reflete (gira 180°)
     else {
-      booEl.style.transform = 'scaleX(-1)';
+      booEl.style.transform = "scaleX(-1)";
     }
 
     // atualiza as propriedades CSS para efetivamente mudar a posição
@@ -84,10 +95,10 @@ boos.forEach(booEl => {
     // temporariamente, torna este boo opaco e não responder a eventos de mouse
     // (pra não começar outro movimento antes de terminar este)
     booEl.style.opacity = 1;
-    booEl.style.pointerEvents = 'none';
+    booEl.style.pointerEvents = "none";
     setTimeout(() => {
-      booEl.style.pointerEvents = 'initial';
-      booEl.style.removeProperty('opacity');
+      booEl.style.pointerEvents = "initial";
+      booEl.style.removeProperty("opacity");
     }, DURACAO_DO_MOVIMENTO);
   });
 });
